@@ -47,7 +47,27 @@ export default function CharacterScript({ children }: Props) {
             const sprite = getComponent<SpriteRef>('Sprite');
             const dirX = Math.max(-1, Math.min(1, x - transform.x)) as Direction;
             const dirY = Math.max(-1, Math.min(1, y - transform.y)) as Direction;
-            if (dirX) sprite.setFlipX(dirX);
+
+            const rightDirection = dirX === 1;
+            const leftDirection = dirX === -1;
+            const bottomDirection = dirY === -1;
+            const topDirection = dirY === 1;
+
+            if (rightDirection) {
+                sprite.setState('walkRight');
+            }
+
+            if (leftDirection) {
+                sprite.setState('walkLeft');
+            }
+
+            if (bottomDirection) {
+                sprite.setState('walkDown');
+            }
+
+            if (topDirection) {
+                sprite.setState('walkUp');
+            }
             return [dirX, dirY];
         },
         [transform, getComponent]
@@ -134,7 +154,7 @@ export default function CharacterScript({ children }: Props) {
 
     useGameLoop(time => {
         // apply wobbling animation
-        wobble();
+        // wobble();
 
         // apply breathe animation
         if (!movementActive.current) {

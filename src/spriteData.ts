@@ -14,15 +14,35 @@ const spriteData: { [index: string]: SpriteProps } = {
         },
     },
     player: {
-        src: './assets/player.png',
-        frameWidth: 20,
-        frameHeight: 20,
+        src: './assets/dps-spritesheet.png',
+        frameWidth: 64,
+        frameHeight: 64,
         frameTime: 300,
         sheet: {
-            default: [[0, 2]],
-            walk: [
+            default: [[0, 0]],
+            walkDown: [
+                [0, 3],
+                [1, 3],
+                [2, 3],
+                [3, 3],
+            ],
+            walkUp: [
+                [0, 2],
                 [1, 2],
                 [2, 2],
+                [3, 2],
+            ],
+            walkLeft: [
+                [0, 1],
+                [1, 1],
+                [2, 1],
+                [3, 1],
+            ],
+            walkRight: [
+                [0, 0],
+                [1, 0],
+                [2, 0],
+                [3, 0],
             ],
             action: [
                 [0, 1],
